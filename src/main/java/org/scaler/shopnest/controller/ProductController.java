@@ -36,10 +36,18 @@ public class ProductController {
         return productCatalogService.getAllProducts();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") Long id) {
         // Logic to retrieve a product by its ID from the database
+        if (id < 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
         Product product = productService.getProductById(id);
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        }
         return new ResponseEntity<>(from(product), HttpStatus.OK);
 
     }

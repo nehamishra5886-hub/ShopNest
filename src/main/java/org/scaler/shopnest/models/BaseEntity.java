@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BaseEntity {
 
-    private int id;
+    private Long id;
     private String createdAt;
     private String updatedAt;
 

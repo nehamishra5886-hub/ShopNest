@@ -1,7 +1,7 @@
 package org.scaler.shopnest.services;
 
+import org.scaler.shopnest.models.Category;
 import org.scaler.shopnest.models.Product;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +18,8 @@ public class ProductCatalogService {
         product.setDescription("Description for Product 1");
         product.setPrice(new java.math.BigDecimal("10.99"));
         product.setQuantity(100);
-        product.setCategory(org.scaler.shopnest.models.enums.Category.ELECTRONICS);
+        //product.setCategory();
+        product.setCategory(new Category());
 
         List<Product> products = new ArrayList<>();
         products.add(product);

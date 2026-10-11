@@ -54,7 +54,6 @@ public class ProductController {
 
     private ProductDTO from(Product product) {
         ProductDTO productDTO = new ProductDTO();
-        //productDTO.setId(product.getId());
         productDTO.setName(product.getName());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice());

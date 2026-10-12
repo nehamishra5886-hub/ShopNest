@@ -17,7 +17,7 @@ public class ProductCatalogService {
         product.setName("Product 1");
         product.setDescription("Description for Product 1");
         product.setPrice(new java.math.BigDecimal("10.99"));
-        product.setQuantity(100);
+        //product.setQuantity(100);
         //product.setCategory();
         product.setCategory(new Category());
 

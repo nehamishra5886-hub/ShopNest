@@ -37,6 +37,7 @@ public class DummyProductService implements IProductService {
 
         } catch (Exception e) {
             // Handle the exception (e.g., log it, throw a custom exception, etc.)
+            e.printStackTrace();
             System.err.println("Error fetching product: " + e.getMessage());
             return null; // or throw a custom exception
         }

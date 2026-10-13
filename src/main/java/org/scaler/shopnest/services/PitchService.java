@@ -18,7 +18,7 @@ import java.util.Map;
 @Service
 public class PitchService implements IPitchService {
 
-    private static final String GROQ_URL= "https://api.openai.com/v1/chat/completions";
+    private static final String GROQ_URL= "https://api.groq.com/openai/v1/chat/completions";
     //private static final String API_KEY =
     private static final String MODEL = "openai/gpt-oss-20b";
     //private static final String SYSTEM_PROMPT = "You are a product pitch generator. You will be given a product name and description, and you will generate a short, catchy pitch for the product. " +
@@ -75,9 +75,9 @@ public class PitchService implements IPitchService {
                 - Reply with only the notification text.
 
                 Product: %s
-                Category: %s
+               
                 Price: $%s
-                Details: %s""".formatted(product.getName(), product.getCategory().getName(),
+                Details: %s""".formatted(product.getName(),
                 product.getPrice(), product.getDescription());
     }
 }

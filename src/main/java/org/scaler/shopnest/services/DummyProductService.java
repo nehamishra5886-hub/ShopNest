@@ -1,6 +1,7 @@
 package org.scaler.shopnest.services;
 
 import org.scaler.shopnest.dto.DummyJsonProductDTO;
+import org.scaler.shopnest.dto.ProductDto;
 import org.scaler.shopnest.models.Product;
 import org.springframework.boot.restclient.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
@@ -44,10 +45,19 @@ public class DummyProductService implements IProductService {
 
     }
 
-//    @Override
-//    public List<Product> getAllProducts() {
-//        return List.of();
-//    }
+    @Override
+    public List<Product> getAllProducts() {
+        return List.of();
+    }
+
+    @Override
+    public Product createProduct(ProductDto productDto) {
+        return null;
+    }
+    @Override
+    public boolean deleteProductById(Long id) {
+        return false;
+    }
 
     private Product from(DummyJsonProductDTO dummyJsonProductDTO) {
         Product product = new Product();

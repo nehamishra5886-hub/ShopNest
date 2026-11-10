@@ -1,7 +1,8 @@
 package org.scaler.shopnest.services;
 
 import org.scaler.shopnest.dto.DummyJsonProductDTO;
-import org.scaler.shopnest.dto.ProductDto;
+import org.scaler.shopnest.dto.DummyJsonProductListDTO;
+import org.scaler.shopnest.dto.ProductDTO;
 import org.scaler.shopnest.models.Product;
 import org.springframework.boot.restclient.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,11 +49,18 @@ public class DummyProductService implements IProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        return List.of();
+        ResponseEntity<DummyJsonProductListDTO> response = restTemplate.getForEntity(
+                "https://dummyjson.com/products?limit=0", DummyJsonProductListDTO.class);
+
+        List<Product> products = new ArrayList<>();
+        for (DummyJsonProductDTO dto : response.getBody().getProducts()) {
+            products.add(from(dto));
+        }
+        return products;
     }
 
     @Override
-    public Product createProduct(ProductDto productDto) {
+    public Product createProduct(ProductDTO productDto) {
         return null;
     }
     @Override

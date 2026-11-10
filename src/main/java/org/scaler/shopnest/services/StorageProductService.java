@@ -1,8 +1,7 @@
 package org.scaler.shopnest.services;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.scaler.shopnest.dto.ProductDto;
+import org.scaler.shopnest.dto.ProductDTO;
 import org.scaler.shopnest.models.Product;
 import org.scaler.shopnest.models.enums.State;
 import org.scaler.shopnest.repository.ProductRepository;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @Primary
@@ -55,7 +52,7 @@ public class StorageProductService implements IProductService{
         return true;
     }
     @Override
-    public Product createProduct(ProductDto productDto) {
+    public Product createProduct(ProductDTO productDto) {
         //Product product = productMapper.toEntity(productDto);
 //        product.setCategory(findOrCreateCategory(product.getCategory()));
 //        product.setCreatedAt(new Date());

@@ -1,7 +1,6 @@
 package org.scaler.shopnest.services;
 
-import org.scaler.shopnest.dto.GroqPitchResponseDto;
-import org.scaler.shopnest.dto.ProductPitchDto;
+import org.scaler.shopnest.dto.GroqPitchResponseDTO;
 import org.scaler.shopnest.models.Product;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.restclient.RestTemplateBuilder;
@@ -49,8 +48,8 @@ public class PitchService implements IPitchService {
                             Map.of("role", "system", "content", SYSTEM_PROMPT),
                             Map.of("role", "user", "content", buildPrompt(product))));
 
-            ResponseEntity<GroqPitchResponseDto> response = restTemplate.postForEntity(GROQ_URL,
-                    new HttpEntity<>(body,headers), GroqPitchResponseDto.class);
+            ResponseEntity<GroqPitchResponseDTO> response = restTemplate.postForEntity(GROQ_URL,
+                    new HttpEntity<>(body,headers), GroqPitchResponseDTO.class);
             if(response.getStatusCode().is2xxSuccessful() && response.hasBody()) {
                 return response.getBody().getChoices().get(0).getMessage().getContent();
             }

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductPitchDto {
+public class ProductPitchDTO {
     private Long id;
     private String pitchMessage;
 

@@ -1,7 +1,7 @@
 package org.scaler.shopnest.services;
 
 import org.scaler.shopnest.dto.CategoryDto;
-import org.scaler.shopnest.dto.ProductDto;
+import org.scaler.shopnest.dto.ProductDTO;
 import org.scaler.shopnest.models.Product;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class ProductImportService {
     public int importProducts() {
         int count = 0;
         for (Product supplierProduct : supplierService.getAllProducts()) {
-            ProductDto dto = toImportDto(supplierProduct);
+            ProductDTO dto = toImportDto(supplierProduct);
             storageService.createProduct(dto);
             count++;
         }
@@ -30,8 +30,8 @@ public class ProductImportService {
         return count;
     }
 
-    private ProductDto toImportDto(Product product) {
-        ProductDto dto = new ProductDto();
+    private ProductDTO toImportDto(Product product) {
+        ProductDTO dto = new ProductDTO();
         //   dto.setId(product.getId());
         dto.setName(product.getName());
         dto.setDescription(product.getDescription());

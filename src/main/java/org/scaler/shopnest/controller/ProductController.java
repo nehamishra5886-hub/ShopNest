@@ -1,19 +1,17 @@
 package org.scaler.shopnest.controller;
 
 import org.scaler.shopnest.dto.CategoryDto;
-import org.scaler.shopnest.dto.ProductDto;
-import org.scaler.shopnest.dto.ProductPitchDto;
+import org.scaler.shopnest.dto.ProductDTO;
+import org.scaler.shopnest.dto.ProductPitchDTO;
 import org.scaler.shopnest.models.Product;
 import org.scaler.shopnest.services.IPitchService;
 import org.scaler.shopnest.services.IProductService;
 import org.scaler.shopnest.services.ProductCatalogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -53,7 +51,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDto> getProductById(@PathVariable("id") Long id) {
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") Long id) {
         // Logic to retrieve a product by its ID from the database
         if (id < 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -68,8 +66,8 @@ public class ProductController {
 
     }
 
-    private ProductDto from(Product product) {
-        ProductDto productDTO = new ProductDto();
+    private ProductDTO from(Product product) {
+        ProductDTO productDTO = new ProductDTO();
         productDTO.setName(product.getName());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice());
@@ -88,7 +86,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/pitch")
-    public ResponseEntity<ProductPitchDto> generateProductPitch(@PathVariable("id") Long id) {
+    public ResponseEntity<ProductPitchDTO> generateProductPitch(@PathVariable("id") Long id) {
         if(id==null || id < 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -97,7 +95,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        ProductPitchDto pitchDto = new ProductPitchDto();
+        ProductPitchDTO pitchDto = new ProductPitchDTO();
         pitchDto.setId(product.getId());
         pitchDto.setPitchMessage(pitchService.generatePitch(product));
 

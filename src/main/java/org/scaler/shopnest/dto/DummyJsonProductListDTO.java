@@ -7,7 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class GroqPitchResponseDto {
-
-    private List<Choice> choices;
+public class DummyJsonProductListDTO {
+    private List<DummyJsonProductDTO> products;
 }
